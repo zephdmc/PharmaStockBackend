@@ -76,7 +76,8 @@ const startServer = async () => {
     console.log('  Database connected');
 
     const port = process.env.PORT || 5000;
-    const host = process.env.HOST || 'localhost';
+    // ✅ FIX: bind to 0.0.0.0 so Render can route external traffic
+    const host = '0.0.0.0';
 
     console.log('  Starting HTTP server on ' + host + ':' + port + '...');
     const server = app.listen(port, host, () => {
